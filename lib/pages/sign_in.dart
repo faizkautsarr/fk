@@ -2,6 +2,7 @@ import 'package:fk/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:fk/repositories/users.dart';
 import 'package:fk/models/user.dart';
+import 'package:fk/tools/utils.dart';
 import 'package:lottie/lottie.dart';
 
 class SignInPage extends StatefulWidget {
@@ -50,25 +51,16 @@ class _SignInPageState extends State<SignInPage> {
             ),
           ),
         );
-        _showSnackBar("success");
+        showSnackBar(context, "success", "Yayy, login successful");
       } else {
-        _showSnackBar("error");
+        showSnackBar(context, "error",
+            "Failed to login, please check your credentials carefully");
       }
 
       setState(() {
         isLoading = false;
       });
     }
-  }
-
-  void _showSnackBar(type) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: type == "error" ? Colors.red : Colors.black,
-      content: Text(type == "error"
-          ? "Failed to login, please check your credentials carefully"
-          : "Yayy, login successful"),
-      duration: const Duration(seconds: 1),
-    ));
   }
 
   @override
@@ -141,7 +133,9 @@ class _SignInPageState extends State<SignInPage> {
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  showSnackBar(context, "success", "Coming soon...");
+                },
                 child: const Text(
                   'Forgot Password?',
                   style: TextStyle(color: Color(0xFFB4B4B4)),
@@ -171,7 +165,9 @@ class _SignInPageState extends State<SignInPage> {
                   : const Text('Sign In'),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                showSnackBar(context, "success", "Coming soon...");
+              },
               child: const Text(
                 "Don't have an account? Sign up here",
                 style: TextStyle(color: Color(0xFFB4B4B4)),

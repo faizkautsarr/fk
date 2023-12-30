@@ -10,6 +10,7 @@ import 'package:fk/models/product.dart';
 import 'package:fk/models/user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fk/stores/carts.dart';
+import 'package:fk/tools/utils.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -92,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black, // Set text color
+                  color: Colors.black,
                 ),
               ),
               leading: IconButton(
@@ -100,9 +101,10 @@ class _HomePageState extends State<HomePage> {
                   Icons.account_circle,
                   color: Colors.black,
                   size: 24,
-                ), // Icon on the left
+                ),
                 onPressed: () {
-                  // Handle the left icon button press
+                  showSnackBar(context, "success",
+                      "Hi ${widget.user.email},\nwelcome to tutuplapak.com,\nhappy shopping and have a nice day!!");
                 },
               ),
               actions: [
