@@ -35,6 +35,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               appBar: AppBar(
                 backgroundColor: Colors.white,
                 elevation: 0.0,
+                centerTitle: true,
                 leading: GestureDetector(
                   child: const Icon(
                     Icons.arrow_back_ios,

@@ -86,6 +86,7 @@ class _HomePageState extends State<HomePage> {
             appBar: AppBar(
               backgroundColor: Colors.white,
               elevation: 0.0,
+              centerTitle: true,
               title: const Text(
                 "TUTUPLAPAK.COM",
                 style: TextStyle(

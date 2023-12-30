@@ -243,6 +243,7 @@ class _CartPageState extends State<CartPage> {
           appBar: AppBar(
             backgroundColor: Colors.white,
             elevation: 0.0,
+            centerTitle: true,
             title: const Text(
               "SHOPPING CART",
               style: TextStyle(
