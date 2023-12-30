@@ -1,5 +1,6 @@
 import 'package:fk/pages/product_detail.dart';
 import 'package:fk/stores/carts.dart';
+import 'package:fk/tools/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fk/models/product.dart';
@@ -191,68 +192,67 @@ class _CartPageState extends State<CartPage> {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
         return Scaffold(
-          floatingActionButton: state.items.isEmpty
-              ? Container()
-              : Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 16),
-                    color: Colors.white,
-                    height: 100,
-                    child: Row(
-                      children: [
-                        Column(
-                          children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width - 32,
-                              margin: const EdgeInsets.only(bottom: 8),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Total ${state.items.length} types of items",
-                                    style: const TextStyle(
-                                        color: Colors.grey,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 12),
-                                  ),
-                                  Text(
-                                    "USD ${state.totalCost}",
-                                    style: const TextStyle(
-                                        color: Color(0xFF0ECF82),
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 14),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width - 32,
-                              height: 40,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color(
-                                      0xFF0ECF82), // Background color
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        12.0), // Border radius
-                                  ),
+          bottomNavigationBar: state.items.isEmpty
+              ? Container(
+                  height: 0,
+                )
+              : Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                  color: Colors.white,
+                  height: 100,
+                  child: Row(
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            width: MediaQuery.of(context).size.width - 32,
+                            margin: const EdgeInsets.only(bottom: 8),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Total ${state.items.length} types of items",
+                                  style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12),
                                 ),
-                                onPressed: () {},
-                                child: const Text('Proceed to Checkout'),
-                              ),
+                                Text(
+                                  "USD ${state.totalCost}",
+                                  style: const TextStyle(
+                                      color: Color(0xFF0ECF82),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 32,
+                            height: 40,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    const Color(0xFF0ECF82), // Background color
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      12.0), // Border radius
+                                ),
+                              ),
+                              onPressed: () {
+                                showSnackBar(
+                                    context, "success", "Coming soon...");
+                              },
+                              child: const Text('Proceed to Checkout'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerDocked,
           backgroundColor: Colors.white,
           appBar: AppBar(
             backgroundColor: Colors.white,

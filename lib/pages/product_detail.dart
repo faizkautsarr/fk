@@ -1,6 +1,7 @@
 import 'package:fk/pages/cart.dart';
 import 'package:fk/stores/liked_products.dart';
 import 'package:fk/stores/carts.dart';
+import 'package:fk/tools/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:fk/models/product.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -190,6 +191,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       width: MediaQuery.of(context).size.width,
                       child: ElevatedButton(
                         onPressed: () {
+                          showSnackBar(
+                              context, "success", "success add to cart.");
                           context
                               .read<CartBloc>()
                               .add(AddToCartEvent(widget.product));
