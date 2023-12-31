@@ -192,7 +192,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       child: ElevatedButton(
                         onPressed: () {
                           showSnackBar(
-                              context, "success", "success add to cart.");
+                              context, "success", "Success add to cart.");
                           context
                               .read<CartBloc>()
                               .add(AddToCartEvent(widget.product));
